@@ -1,0 +1,44 @@
+{
+  "tasks": [
+    {
+      "title": "first task",
+      "description": "complete the task and report ",
+      "deadline": "2023-09-20",
+      "assignedTo": "t@t.com",
+      "tag": "tag2",
+      "assignedBy": "a@a.com",
+      "status": "assigned",
+      "assignedDate": "9/11/2023",
+      "id": 1
+    }
+  ],
+  "users": [
+    {
+      "email": "t@t.com",
+      "password": "t",
+      "role": "user",
+      "id": 1,
+      "firstName": "tartaru",
+      "lastName": "giant",
+      "phone": "9988996968"
+    },
+    {
+      "email": "a@a.com",
+      "password": "a",
+      "role": "admin",
+      "id": 2
+    },
+    {
+      "email": "d@d.com",
+      "password": "d",
+      "role": "user",
+      "id": 3
+    },
+    {
+      "email": "darkangle5322@gmail.com",
+      "password": "P",
+      "role": "user",
+      "id": 4
+    }
+  ]
+}
