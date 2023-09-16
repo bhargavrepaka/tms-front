@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 import { Box, Button,  FormControl, InputLabel, MenuItem, Modal, Paper, Select, Stack, TextField, Typography } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
@@ -88,7 +89,6 @@ export default function Tasks() {
   const handleTaskClick = (params) => {
     setOpenModal(true)
     setSelectedTask(params.row)
-    console.log(params.row)
     setTag(params.row.tag)
     setStatus(params.row.status)
     scrollRef.current?.scrollIntoView({behavior:"smooth",block:"center", inline:"nearest"})
@@ -108,8 +108,7 @@ export default function Tasks() {
   const handleNewTaskChange = (e) => {
     setNewTask({ ...newTask, [e.target.name]: e.target.value })
   }
-  const handleSelectedTaskChange = (e) => {
-    console.log(e.target.name, e.target.value)
+  const handleSelectedTaskChange = (e) => {   
     setSelectedTask({ ...selectedTask, [e.target.name]: e.target.value })
   }
   const handleNewTaskSubmit = (e) => {
@@ -126,20 +125,17 @@ export default function Tasks() {
       return
     }
     const commentObject={message:comment,TaskId:selectedTask.id,sender:loggedUser.email,senderRole:loggedUser.role}
-    console.log(commentObject)
+    
     dispatch(addComment(commentObject))
     setComment('')
   }
   const handleTaskChangesSubmit = (e) => {
     e.preventDefault()
-    console.log(selectedTask)
     const updatedTask = { ...selectedTask }
     delete updatedTask.createdAt
     delete updatedTask.updatedAt
     dispatch(updateTask(updatedTask))
-    console.log(updatedTask)
     setOpenModal(false)
-    console.log(status, tag)
     toast.success("Task Updated Successfully")
   }
 

@@ -7,7 +7,7 @@ const initialState={
 export const fetchUsers=createAsyncThunk(
     'users/fetchUsers',
     async()=>{
-        console.log('fetching users')
+        //('fetching users')
         const response =await fetch(`${import.meta.env.VITE_API_URL}/users`,{
             headers:{
                 'Authorization':sessionStorage.getItem('accessToken')
@@ -21,7 +21,7 @@ export const fetchUsers=createAsyncThunk(
 export const updateUser=createAsyncThunk(
     'users/updateUser',
     async(updatedUser)=>{
-        console.log('updatin user',updatedUser)
+        //('updatin user',updatedUser)
         const response =await fetch(`${import.meta.env.VITE_API_URL}/users/`+updatedUser.id,{
             method:"PATCH",
             headers: {
@@ -31,7 +31,7 @@ export const updateUser=createAsyncThunk(
               body: JSON.stringify(updatedUser)
             })
         const result = await response.json()
-        console.log(result)
+        //(result)
         return result
     }
 )

@@ -13,7 +13,7 @@ export const fetchUserTasks = createAsyncThunk(
     'tasks/fetchUserTasks',
     async (arg, thunkAPI) => {
         try {
-            console.log('fetching user tasks');
+            //('fetching user tasks');
             const response = await fetch(`${import.meta.env.VITE_API_URL}/tasks/user`, {
                 headers: {
                     'Authorization': sessionStorage.getItem('accessToken')
@@ -25,10 +25,10 @@ export const fetchUserTasks = createAsyncThunk(
             }
 
             const result = await response.json();
-            console.log(result);
+            //(result);
             return result;
         } catch (error) {
-            console.log(error);
+            //(error);
             return thunkAPI.rejectWithValue(error.message);
         }
     }
@@ -38,7 +38,7 @@ export const fetchAllTasks = createAsyncThunk(
     'tasks/fetchAllTasks',
     async (arg, thunkAPI) => {
         try {
-            console.log('fetching all tasks');
+            //('fetching all tasks');
             const response = await fetch(`${import.meta.env.VITE_API_URL}/tasks`, {
                 headers: {
                     'Authorization': sessionStorage.getItem('accessToken')
@@ -50,10 +50,10 @@ export const fetchAllTasks = createAsyncThunk(
             }
 
             const result = await response.json();
-            console.log(result);
+            //(result);
             return result;
         } catch (error) {
-            console.log(error);
+            //(error);
             return thunkAPI.rejectWithValue(error.message);
         }
     }
@@ -63,7 +63,7 @@ export const addTask = createAsyncThunk(
     'tasks/addTask',
     async (newTask, thunkAPI) => {
         try {
-            console.log('adding new task', newTask);
+            //('adding new task', newTask);
             const response = await fetch(`${import.meta.env.VITE_API_URL}/tasks`, {
                 method: "POST",
                 headers: {
@@ -78,10 +78,10 @@ export const addTask = createAsyncThunk(
             }
 
             const result = await response.json();
-            console.log(result);
+            //(result);
             return result;
         } catch (error) {
-            console.log(error);
+            //(error);
             return thunkAPI.rejectWithValue(error.message);
         }
     }
@@ -91,7 +91,7 @@ export const addComment = createAsyncThunk(
     'tasks/addComment',
     async (newComment, thunkAPI) => {
         try {
-            console.log('adding new comment', newComment);
+            //('adding new comment', newComment);
             const response = await fetch(`${import.meta.env.VITE_API_URL}/tasks/comment`, {
                 method: "POST",
                 headers: {
@@ -106,10 +106,10 @@ export const addComment = createAsyncThunk(
             }
 
             const result = await response.json();
-            console.log(result);
+            //(result);
             return result;
         } catch (error) {
-            console.log(error);
+            //(error);
             return thunkAPI.rejectWithValue(error.message);
         }
     }
@@ -119,7 +119,7 @@ export const updateTask = createAsyncThunk(
     'tasks/updateTask',
     async (updatedTask, thunkAPI) => {
         try {
-            console.log('updating task', updatedTask);
+            //('updating task', updatedTask);
             const tid = updatedTask.id;
             delete updatedTask.id;
             const response = await fetch(`${import.meta.env.VITE_API_URL}/tasks/` + tid, {
@@ -136,10 +136,10 @@ export const updateTask = createAsyncThunk(
             }
 
             const result = await response.json();
-            console.log(result);
+            //(result);
             return result;
         } catch (error) {
-            console.log(error);
+            //(error);
             return thunkAPI.rejectWithValue(error.message);
         }
     }

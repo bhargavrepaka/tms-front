@@ -13,7 +13,7 @@ const Dashboard = () => {
   const assignedTasks = useSelector(selectAssignedTasks)
   const doneTasks = useSelector(selectDoneTasks)
   const inprogressTaks=useSelector(selectInprogressTasks)
-  console.log(tasks)
+ 
  
   const data = {
     labels: ['Assigned', 'Done','In Progress'],

@@ -43,7 +43,7 @@ const Login = () => {
                         />
                         <Stack direction={'row'} gap={2}>
                             <Button variant="contained" type='submit'>Login</Button>
-                            <Link> <Button variant='text'  >No account?</Button></Link>
+                            <Link to={"/register"}> <Button variant='text'  >No account?</Button></Link>
                         </Stack>
 
                     </Stack>

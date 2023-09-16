@@ -65,12 +65,10 @@ export default function Users() {
   
 
   useEffect(()=>{
-    console.log("running users")
     dispatch(fetchUsers())
   },[dispatch])
 
   const handleUserClick = (params) => {
-    console.log(params.row)
     setOpenModal(true)
     setSelectedUser(params.row)
     setSelectedUserRole(params.row.role)
@@ -83,9 +81,7 @@ export default function Users() {
 
   const handleUserChangesSubmit = (e) => {
     e.preventDefault()
-    console.log(selectedUserRole)
     const updatedUser={...selectedUser, role:selectedUserRole}
-    console.log(updatedUser)
     dispatch(updateUser(updatedUser))
     setOpenModal(false)
   }
