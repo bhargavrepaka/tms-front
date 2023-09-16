@@ -5,7 +5,7 @@ import { TextField } from '@mui/material'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { registerUser, selectLoggedUser } from '../redux/authSlice'
-import { Navigate } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 
 
 const Register = () => {
@@ -57,7 +57,7 @@ const Register = () => {
                         />
                         <Stack direction={'row'} gap={2}>
                             <Button variant="contained" type='submit'>Register</Button>
-                            <Button variant='text' href='/login' >Have an Account?</Button>
+                            <Link to={"/login"}> <Button variant='text'  >Have an Account?</Button> </Link>
                         </Stack>
 
                     </Stack>
