@@ -2,12 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import toast from "react-hot-toast";
 
 const initialState={
-    loggedUser:null
+    loggedUser:null,
+    error:null
 }
 
 export const checkUserLogin=createAsyncThunk(
     'auth/checkUserLogin',
-    async({email,password},{rejectWithValue})=>{
+    async({email,password},thunkAPI)=>{
         console.log('checkin login',email)
         try {
             const response =await fetch(`${import.meta.env.VITE_API_URL}/auth/login`,{
@@ -28,14 +29,14 @@ export const checkUserLogin=createAsyncThunk(
             return result.user
         } catch (error) {
             console.log("eerrrrr",error)
-            return rejectWithValue(error.message)
+            return thunkAPI.rejectWithValue(error.message)
         }
         
     }
 )
 export const registerUser=createAsyncThunk(
     'auth/registerUser',
-    async({email,password},{rejectWithValue})=>{
+    async({email,password},thunkAPI)=>{
         console.log('checkin register',email)
         try {
             const response =await fetch(`${import.meta.env.VITE_API_URL}/auth/register`,{
@@ -54,21 +55,27 @@ export const registerUser=createAsyncThunk(
         sessionStorage.setItem('accessToken',result.accessToken)
         return result.user
         } catch (error) {
-           return rejectWithValue(error.message)
+            console.log("eerrrrr",error)
+            thunkAPI.rejectWithValue(error.message)
         }
         
     }
 )
 export const logoutUser=createAsyncThunk(
     "auth/logoutUser",
-    async()=>{
+    async(args,thunkAPI)=>{
         console.log("logging out")
         try {
             const response =await fetch(`${import.meta.env.VITE_API_URL}/auth/logout`)
+            if(!response.ok){
+                const err= await response.json()
+                throw new Error(err.message)
+            }
             console.log(response)
             return null
         } catch (error) {
             console.log(error)
+            thunkAPI.rejectWithValue(error.message)
         }
         
     }
